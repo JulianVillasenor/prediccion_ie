@@ -1,0 +1,35 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Entornos virtuales
+.env/
+.venv/
+env/
+venv/
+ENV/
+.env.bak/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Archivos de log
+*.log
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Datos descargados (dataset y comprimidos)
+files/*.csv
+*.zip
+*.tar
+*.tar.gz
+*.gz
