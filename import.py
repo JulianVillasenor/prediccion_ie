@@ -1,31 +1,68 @@
-import kagglehub
 import os
-import shutil
+import subprocess
+import zipfile
 import pandas as pd
 
-# 1. Descargar dataset
-path = kagglehub.dataset_download(
-    "rakeshkapilavai/extrovert-vs-introvert-behavior-data"
-)
+COMP_NAME = "playground-series-s5e7"
 
-print("Dataset descargado en:", path)
-print("Archivos en el dataset:")
-print(os.listdir(path))
+# Directorio del proyecto (donde está este archivo)
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# 2. Crear carpeta 'files' dentro del proyecto (si no existe)
-project_dir = os.getcwd()  # B:\unison\reconocimiento_patrones\prediccion_ie
-dest_dir = os.path.join(project_dir, "files")
-os.makedirs(dest_dir, exist_ok=True)
+# Carpeta donde guardaremos los datos
+DATA_DIR = os.path.join(PROJECT_DIR, "files")
+os.makedirs(DATA_DIR, exist_ok=True)
 
-# 3. Elegir el archivo bueno
-src_csv = os.path.join(path, "personality_dataset.csv")  # este es el chido
-dst_csv = os.path.join(dest_dir, "personality_dataset.csv")
+ZIP_PATH = os.path.join(DATA_DIR, f"{COMP_NAME}.zip")
+TRAIN_PATH = os.path.join(DATA_DIR, "train.csv")
 
-# 4. Copiar a tu carpeta de trabajo
-shutil.copy(src_csv, dst_csv)
-print("CSV copiado a:", dst_csv)
+def download_data():
+    """Descarga los datos de Kaggle si no existen."""
+    if os.path.exists(TRAIN_PATH):
+        print("✅ train.csv ya existe en 'files/', no se descarga nada.")
+        return
 
-# 5. Probar lectura con pandas
-df = pd.read_csv(dst_csv)
-print(df.head())
-print(df.info())
+    print("⬇️ Descargando datos desde Kaggle...")
+    # Necesitas tener el CLI de Kaggle instalado y configurado:
+    #   pip install kaggle
+    #   y tu kaggle.json en la ruta adecuada
+    subprocess.run(
+        [
+            "kaggle", "competitions", "download",
+            "-c", COMP_NAME,
+            "-p", DATA_DIR
+        ],
+        check=True
+    )
+
+    # Buscar el zip descargado (por si el nombre exacto cambia)
+    zips = [f for f in os.listdir(DATA_DIR) if f.endswith(".zip")]
+    if not zips:
+        raise FileNotFoundError("No se encontró ningún .zip en la carpeta 'files' después de la descarga.")
+
+    zip_file = os.path.join(DATA_DIR, zips[0])
+    print(f"📦 Descomprimiendo: {zip_file}")
+
+    with zipfile.ZipFile(zip_file, "r") as z:
+        z.extractall(DATA_DIR)
+
+    print("✅ Archivos extraídos en:", DATA_DIR)
+
+
+def main():
+    download_data()
+
+    print("📁 Archivos en 'files/':")
+    print(os.listdir(DATA_DIR))
+
+    if os.path.exists(TRAIN_PATH):
+        df = pd.read_csv(TRAIN_PATH)
+        print("\n🧾 Primeras filas de train.csv:")
+        print(df.head())
+        print("\nℹ️ Info de train.csv:")
+        print(df.info())
+    else:
+        print("⚠️ No se encontró train.csv en 'files/'.")
+
+
+if __name__ == "__main__":
+    main()
