@@ -5,7 +5,7 @@ Repositorio para un proyecto de **clasificación binaria** que predice si una pe
 
 Proyecto desarrollado en Python como práctica de **Reconocimiento de Patrones / Ciencia de Datos**.
 
----
+
 ---
 Proyecto realizado por Julian Villaseñor y Leonardo Brambilla
 ---
