@@ -8,8 +8,8 @@ Proyecto desarrollado en Python como práctica de **Reconocimiento de Patrones /
 
 ---
 Proyecto realizado por: 
-Julian Villaseñor, 
-Leonardo Brambilla
+- Julian Villaseñor, 
+- Leonardo Brambilla
 ---
 
 ## Objetivo
