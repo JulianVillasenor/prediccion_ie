@@ -7,7 +7,9 @@ Proyecto desarrollado en Python como práctica de **Reconocimiento de Patrones /
 
 
 ---
-Proyecto realizado por Julian Villaseñor y Leonardo Brambilla
+Proyecto realizado por: 
+Julian Villaseñor, 
+Leonardo Brambilla
 ---
 
 ## Objetivo
