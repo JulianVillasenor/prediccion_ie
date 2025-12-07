@@ -1,4 +1,4 @@
-# 🧠 Predicción de Personalidad: Introvertido vs Extrovertido
+#  Predicción de Personalidad: Introvertido vs Extrovertido
 
 Repositorio para un proyecto de **clasificación binaria** que predice si una persona es
 **introvertida** o **extrovertida** a partir de características de comportamiento social.
@@ -6,8 +6,11 @@ Repositorio para un proyecto de **clasificación binaria** que predice si una pe
 Proyecto desarrollado en Python como práctica de **Reconocimiento de Patrones / Ciencia de Datos**.
 
 ---
+---
+Proyecto realizado por Julian Villaseñor y Leonardo Brambilla
+---
 
-## 📌 Objetivo
+## Objetivo
 
 Entrenar y evaluar modelos de *Machine Learning* que, usando variables como:
 
@@ -24,7 +27,7 @@ puedan predecir la variable objetivo:
 
 ---
 
-## 📂 Dataset
+##  Dataset
 
 Se utiliza el dataset de Kaggle:
 
