@@ -37,5 +37,8 @@ Se utiliza el dataset de Kaggle:
 
 En este repositorio, el CSV principal se encuentra en:
 
+## Colab
+https://colab.research.google.com/drive/1dTuoaqcas7gsJETq_FSdCtRFWcjS9CYD?usp=sharing
 ```text
 files/personality_dataset.csv
+
